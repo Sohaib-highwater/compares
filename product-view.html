@@ -1,6 +1,9 @@
 <div class="container style01">
 
 
+
+
+
     {{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
     
     <div class="productView"
@@ -66,8 +69,8 @@
                 </div>
             </figure>
          
-            <ul class="productView-thumbnails" {{#gt product.images.length 5}} data-slick='{
-                    "infinite": false,
+            <ul id="productView-thumbnails" class="productView-thumbnails" {{#gt product.images.length 5}} data-slick='{
+                    "infinite": true,
                     "mobileFirst": true,
                     "dots": false,
                     "draggable": true,
@@ -76,7 +79,7 @@
                     "vertical": true,
                     "accessibility": false,
                     "slidesToShow": 3,
-                    "slidesToScroll": 2
+                    "slidesToScroll": 1
                  
                    
                  
@@ -97,6 +100,11 @@
                     </a>
                 </li>
                 {{/each}}
+                
+                <div id="product-thumbnails-getid">
+                     </div>
+                
+
             </ul>
         </section>
         <span class="productView__spacer"></span>
@@ -382,12 +390,6 @@
             </div>
     
     
-      
-         
-    
-    
-    
-          
         </section>
     
       
@@ -399,58 +401,126 @@
         <div class="loadingOverlay"></div>
     </div>
         
-    </div>
+</div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-       document.querySelectorAll('[data-quantity-minus]').forEach(function (btn) {
-           btn.addEventListener('click', function () {
-               var input = this.nextElementSibling;
-               var value = parseInt(input.value);
-               var min = parseInt(input.getAttribute('data-quantity-min')) || 1;
-               if (value > min) {
-                   input.value = value - 0;
-               }
-           });
-       });
     
-       document.querySelectorAll('[data-quantity-plus]').forEach(function (btn) {
-           btn.addEventListener('click', function () {
-               var input = this.previousElementSibling;
-               var value = parseInt(input.value);
-               var max = parseInt(input.getAttribute('data-quantity-max')) || Infinity;
-               if (value < max) {
-                   input.value = value + 2;
-               }
-           });
-       });
+<style>
+        
+.productVideo-thumbnail .productVideo-img {
+	text-align: center;
+	margin:5px 0 10px;
+}
+
+.productVideo-thumbnail .modal-content {
+	background:tranparent;
+}
+
+.productVideo-thumbnail .productVideo-img img {
+	width:80px;
+}
+
+.page-type-product .modal-background {
+	background: rgba(0, 0, 0, 0.6) !important;
+	margin-top:0 !important;
+}
+
+.page-type-product .modal {
+    background-color:transparent !important;
+}
+.productVideoPopup {
+    margin-top:0 !important;
+}
+
+.page-type-product .modal {
+	top:53% !important;
+}
+
+.productVideo-thumbnail .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    color: white;
+    background: transparent;
+    border: 2px solid #fff;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.productVideo-thumbnail button {
+	position:relative;
+	padding-left:0;
+	padding-right:0;
+}
+
+.productVideo-thumbnail .modal-close {
+	top:5px !important;
+	right:5px !important;
+    background-color: #000;
+    color: #fff !important;
+}
+
+.page-type-product .Slider-product-gallery-c .productView-thumbnails .slick-prev::before {
+    transform: translateX(-50%) rotate(270deg) !important;
+}
+
+
+</style>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Quantity Minus Button Logic
+        document.querySelectorAll('[data-quantity-minus]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var input = this.nextElementSibling;
+                var value = parseInt(input.value);
+                var min = parseInt(input.getAttribute('data-quantity-min')) || 1;
+                if (value > min) {
+                    input.value = value - 1; // Corrected the decrement to subtract 1
+                }
+            });
+        });
+
+        // Quantity Plus Button Logic
+        document.querySelectorAll('[data-quantity-plus]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var input = this.previousElementSibling;
+                var value = parseInt(input.value);
+                var max = parseInt(input.getAttribute('data-quantity-max')) || Infinity;
+                if (value < max) {
+                    input.value = value + 1; // Corrected the increment to add 1
+                }
+            });
+        });
     });
-    
-    
-    
-    
-    
-    
+
     document.addEventListener('DOMContentLoaded', function () {
         var acc = document.querySelectorAll('.opener');
         var allPanels = document.querySelectorAll('.slide');
-    
+
         // Initially hide all panels
         allPanels.forEach(function (panel) {
             panel.classList.add('acc-show');
         });
-    
+
+        // Accordion Logic with Toggle and Icons
         acc.forEach(function (item) {
             // Append a span element for the icon
             var icon = document.createElement('span');
             icon.classList.add('icon');
             item.appendChild(icon);
-    
+
             item.addEventListener('click', function (e) {
                 e.preventDefault();
-    
+
                 var nextElement = this.nextElementSibling;
-    
+
                 // If the clicked section is already open, close it
                 if (!nextElement.classList.contains('acc-show')) {
                     nextElement.classList.add('acc-show');
@@ -463,7 +533,7 @@
                     acc.forEach(function (opener) {
                         opener.classList.remove('rotated');
                     });
-    
+
                     // Open the clicked section
                     nextElement.classList.remove('acc-show');
                     this.classList.add('rotated');
@@ -471,27 +541,136 @@
             });
         });
     });
-    
-    
-    
-    document.addEventListener('DOMContentLoaded', function() {
-            var openers = document.querySelectorAll('.opener');
-            var slides = document.querySelectorAll('.slide');
-    
-            openers.forEach(function(opener) {
-                opener.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var slide = this.nextElementSibling;
-    
-                    // Toggle the clicked section
-                    slide.classList.toggle('acc-hidden');
-    
-                
-                });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var openers = document.querySelectorAll('.opener');
+        var slides = document.querySelectorAll('.slide');
+
+        // Simplified Accordion Toggle Logic
+        openers.forEach(function (opener) {
+            opener.addEventListener('click', function (e) {
+                e.preventDefault();
+                var slide = this.nextElementSibling;
+
+                // Toggle the clicked section
+                slide.classList.toggle('acc-hidden');
             });
         });
-    
-        
-    
-    </script>
-    
+    });
+
+// product video get using Graphql
+
+document.addEventListener('DOMContentLoaded', function () {
+    const productId = {{product.id}}; // Injecting the current product ID dynamically
+
+    console.log('Product ID:', productId);
+
+    fetch("/graphql", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer {{settings.storefront_api.token}}" // Replace with a valid API token
+        },
+        body: JSON.stringify({
+            query: `
+            query {
+                site {
+                    products(entityIds: [${productId}]) {
+                        edges {
+                            node {
+                                videos {
+                                    edges {
+                                        node {
+                                            title
+                                            url
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }`
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Full response:", data);
+
+        // Insert video URLs into the HTML
+        const videos = data.data.site.products.edges[0]?.node.videos.edges || [];
+        renderVideos(videos);
+    })
+    .catch(error => console.error('Error fetching videos:', error));
+
+function renderVideos(videos) {
+    const targetContainer = document.getElementById('product-thumbnails-getid');
+
+    // Clear existing content before rendering new videos
+    targetContainer.innerHTML = '';
+
+    videos.forEach((video, index) => {
+        const videoUrl = video.node.url;
+        const videoId = extractYouTubeId(videoUrl);
+
+        if (videoId) {
+            const videoHTML = `
+                <div class="productVideo-thumbnail">
+                    <div class="productVideo-img">
+                        <button 
+                            data-video-url="${videoUrl}" 
+                            data-reveal-id="video-modal-popup-${index}" 
+                            class="productVideo-trigger">
+                            <img
+                                src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg"
+                                alt="video thumbnail"
+                                class="video-thumbnail"
+                            />
+                            <span class="play-icon">&#9658;</span>
+                        </button>
+                    </div>
+                    
+                    <div id="video-modal-popup-${index}" class="modal modal--large productVideoPopup" data-reveal>
+                        <button class="modal-close" onclick="closeModal(${index})">&times;</button>
+                        <div class="modal-content">
+                            <iframe
+                                class="productView-video"
+                                width="100%"
+                                height="500"
+                                src="https://www.youtube.com/embed/${videoId}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="loadingOverlay"></div>
+                    </div>
+                </div>
+            `;
+
+            // Append the generated HTML to the target container
+            targetContainer.innerHTML += videoHTML;
+        }
+    });
+}
+
+
+
+    // Function to extract YouTube ID from the URL
+    function extractYouTubeId(url) {
+        const regex = /(?:\?v=|\/embed\/|\/vi\/|youtu\.be\/|\/v\/|\/e\/|\/watch\?v=|\/watch\?.+&v=)([^#\&\?]+).*/;
+        const match = url.match(regex);
+        return (match && match[1]) ? match[1] : null;
+    }
+
+    // Function to close the modal
+    function closeModal(index) {
+        const modal = document.getElementById(`video-modal-popup-${index}`);
+        modal.style.display = 'none';
+    }
+});
+
+
+</script>
+
