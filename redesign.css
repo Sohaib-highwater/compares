@@ -4,7 +4,9 @@
   font-weight: 400;
   font-style: normal;
 }
-
+.btn-row.academy-btn-row {
+    padding: 0 !important;
+}
 
 [class^=icon-],
 [class*=" icon-"] {
@@ -18,6 +20,312 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+// Product Video Thumbnails
+
+.productVideo-thumbnail {
+    .productVideo-img {
+        text-align: center;
+        margin: 5px 0 10px;
+
+        img {
+            width: 80px;
+        }
+    }
+
+    .modal-content {
+        background: transparent;
+    }
+
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.6rem;
+        color: white;
+        background: transparent;
+        border: 2px solid #fff;
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+    }
+
+    button {
+        position: relative;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-close {
+        top: 5px !important;
+        right: 5px !important;
+        background-color: #000;
+        color: #fff !important;
+    }
+}
+
+.page-type-product {
+    .modal-background {
+        background: rgba(0, 0, 0, 0.6) !important;
+        margin-top: 0 !important;
+    }
+
+    .modal {
+        background-color: transparent !important;
+        top: 53% !important;
+    }
+
+    .Slider-product-gallery-c {
+        .productView-thumbnails {
+            .slick-prev::before {
+                transform: translateX(-50%) rotate(270deg) !important;
+            }
+        }
+    }
+}
+
+.productVideoPopup {
+    margin-top: 0 !important;
+}
+
+
+// tool kit guide page styling
+
+.toolkit-cutomer-wrap {
+  padding: 30px 0px;
+
+  @include breakpoint('medium') {
+    padding: 50px 0px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .tookit-customer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 0;
+
+    @include breakpoint('medium') {
+      flex-wrap: nowrap;
+      gap: 20px 40px;
+    }
+
+    .img-container {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+
+      @include breakpoint('medium') {
+        width: 40%;
+      }
+
+      @include breakpoint('large') {
+        width: 27%;
+      }
+    }
+
+    .customer-content {
+      width: 100%;
+
+      @include breakpoint('medium') {
+        width: 60%;
+      }
+
+      @include breakpoint('large') {
+        width: 73%;
+      }
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 30px;
+      color: #ee3124;
+      margin: 0 0 8px;
+
+      @include breakpoint('medium') {
+        font-size: 33px;
+        line-height: 33px;
+      }
+
+      @include breakpoint('large') {
+        font-size: 72px;
+        line-height: 72px;
+      }
+    }
+
+    h3 {
+      font-size: 15px;
+      line-height: 15px;
+      color:#0A0A0A;
+      margin:0 0 10px;
+  
+      @include breakpoint('medium') {
+        font-size: 20px;
+        line-height: 20px;
+      }
+
+      @include breakpoint('large') {
+        font-size: 25px;
+        line-height: 25px;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 18px;
+      color: #0a0a0a;
+      margin: 0;
+  
+      @include breakpoint('medium') {
+        font-size: 15px;
+        line-height: 25px;
+      }
+    }
+  }
+
+}
+
+.tookit-guide-wrap {
+  background-color: #eee;
+  padding: 50px 0;
+
+  @include breakpoint('medium') {
+    padding: 100px 0;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin:0 0 20px;
+      color: #0a0a0a;
+
+      @include breakpoint('medium') {
+        font-size: 25px;
+        margin:0 0 30px;
+      }
+    }
+  }
+
+  .guide-details-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 15px;
+
+    @include breakpoint('medium') {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 40px 25px;
+    }
+  }
+
+  .single-guide-box {
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 21px;
+      color: #000;
+      margin: 18px 0 0;
+
+      @include breakpoint('medium') {
+        font-size: 20px;
+        line-height: 30px;
+        margin: 25px 0 0;
+      }
+
+      @include breakpoint('large') {
+        font-size: 30px;
+        line-height: 40px;
+        margin: 25px 0 0;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      margin: 10px 0 20px;
+      line-height: 16px;
+      color: #0a0a0a;
+
+      @include breakpoint('medium') {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      br {
+        display: none;
+
+        @include breakpoint('medium') {
+          display: none;
+        }
+
+        @include breakpoint('large') {
+          display: block;
+        }
+      }
+    }
+      
+    a {
+        font-size: 14px;
+        font-weight: 700;
+        border: 1px solid #F13120;
+        background-color: #F13120;
+        text-decoration: none;
+        color: #fff;
+        padding: 6px 20px;
+        display: inline-block;
+
+        @include breakpoint('medium') {
+          font-size: 18px;
+        }
+      }
+  }
+
+
+
+.legal-consent-container {
+    ul.inputs-list {
+        list-style: none;
+        margin: 2rem 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    input[type="checkbox"] {
+        height: 25px;
+        width: 25px !important;
+        margin-right: 15px;
+    }
+
+    .hs-richtext p {
+        font-size: 18px;
+    }
+}
+
 
 .academy-docket-btn-wrapper .academy-docket-btn {
     background: #f13120;
@@ -887,7 +1195,7 @@ html {
           line-height: 30px;
           background: #fff;
         }
-        .hs-input {
+        .hs-input:not([type="checkbox"]) {
           display: block;
           margin: 0;
           width: 100% !important;
@@ -5978,10 +6286,6 @@ select::-ms-expand {
 
 .container.style01 {
   max-width: 1730px;
-}
-
-.about-topics-area .container.style01 {
-  max-width: 1400px;
 }
 
 .products-area {
@@ -12948,12 +13252,7 @@ section.blogs-features .blog-post .image img {
 }
 
 .about-intro {
-//   padding: 112px 0 104px;
-    padding: 80px 0;
-}
-
-.about-intro h2 {
-    margin-top:0;
+  padding: 112px 0 104px;
 }
 
 @media (max-width: 1199px) {
@@ -12963,7 +13262,7 @@ section.blogs-features .blog-post .image img {
 }
 
 .about-intro .container {
-  max-width: 1400px;
+  max-width: 1560px;
 }
 
 @media (max-width: 991px) {
@@ -13049,24 +13348,10 @@ section.blogs-features .blog-post .image img {
 }
 
 .about-video-banner .video-holder {
-  max-width: 1400px;
+  max-width: 982px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-}
-
-.about-video-banner .video-holder {
-	display:flex;
-	justify-content:space-between;
-	gap:20px;
-}
-
-.about-video-banner .video-holder a {
-	width:50%;
-}
-
-.about-video-banner .video-holder iframe {
-	height:350px !important;
 }
 
 .about-alert-bar {
@@ -13082,26 +13367,6 @@ section.blogs-features .blog-post .image img {
   font-size: 40px;
   line-height: 1.3;
   font-weight: 700;
-}
-
-@media only screen and (max-width:500px) and (min-width:200px){
-	.about-video-banner {
-        padding: 70px 0 30px !important;
-	}
-}
-
-@media (max-width: 768px) {
-  .about-video-banner .video-holder {
-        flex-wrap: wrap;
-    }
-    
-    .about-video-banner .video-holder a {
-        width: 100%;
-    }
-    
-    .about-video-banner .video-holder iframe {
-        height: 300px !important;
-    }
 }
 
 @media (max-width: 1199px) {
@@ -13124,9 +13389,8 @@ section.blogs-features .blog-post .image img {
 }
 
 .about-topics-area {
-//   padding: 110px 0 98px;
+  padding: 110px 0 98px;
   background: #fff;
-  padding: 80px 0;
 }
 
 @media (max-width: 1199px) {
@@ -17560,212 +17824,3 @@ section.blogs-features .blog-post .image img {
         margin-top: 0 !important;
     }
 }
-
-// tool kit guide page styling
-
-.toolkit-cutomer-wrap {
-  padding: 30px 0px;
-
-  @include breakpoint('medium') {
-    padding: 50px 0px;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .tookit-customer-inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px 0;
-
-    @include breakpoint('medium') {
-      flex-wrap: nowrap;
-      gap: 20px 40px;
-    }
-
-    .img-container {
-      width: 100%;
-
-      img {
-        width: 100%;
-      }
-
-      @include breakpoint('medium') {
-        width: 40%;
-      }
-
-      @include breakpoint('large') {
-        width: 27%;
-      }
-    }
-
-    .customer-content {
-      width: 100%;
-
-      @include breakpoint('medium') {
-        width: 60%;
-      }
-
-      @include breakpoint('large') {
-        width: 73%;
-      }
-    }
-
-    h2 {
-      font-size: 30px;
-      line-height: 30px;
-      color: #ee3124;
-      margin: 0 0 8px;
-
-      @include breakpoint('medium') {
-        font-size: 33px;
-        line-height: 33px;
-      }
-
-      @include breakpoint('large') {
-        font-size: 72px;
-        line-height: 72px;
-      }
-    }
-
-    h3 {
-      font-size: 15px;
-      line-height: 15px;
-      color:#0A0A0A;
-      margin:0 0 10px;
-  
-      @include breakpoint('medium') {
-        font-size: 20px;
-        line-height: 20px;
-      }
-
-      @include breakpoint('large') {
-        font-size: 25px;
-        line-height: 25px;
-      }
-    }
-
-    p {
-      font-size: 12px;
-      line-height: 18px;
-      color: #0a0a0a;
-      margin: 0;
-  
-      @include breakpoint('medium') {
-        font-size: 15px;
-        line-height: 25px;
-      }
-    }
-  }
-
-}
-
-.tookit-guide-wrap {
-  background-color: #eee;
-  padding: 50px 0;
-
-  @include breakpoint('medium') {
-    padding: 100px 0;
-  }
-
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-    h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin:0 0 20px;
-      color: #0a0a0a;
-
-      @include breakpoint('medium') {
-        font-size: 25px;
-        margin:0 0 30px;
-      }
-    }
-  }
-
-  .guide-details-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px 15px;
-
-    @include breakpoint('medium') {
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 40px 25px;
-    }
-  }
-
-  .single-guide-box {
-    text-align: center;
-
-    img {
-      width: 100%;
-    }
-
-    h4 {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 21px;
-      color: #000;
-      margin: 18px 0 0;
-
-      @include breakpoint('medium') {
-        font-size: 20px;
-        line-height: 30px;
-        margin: 25px 0 0;
-      }
-
-      @include breakpoint('large') {
-        font-size: 30px;
-        line-height: 40px;
-        margin: 25px 0 0;
-      }
-    }
-
-    p {
-      font-size: 12px;
-      margin: 10px 0 20px;
-      line-height: 16px;
-      color: #0a0a0a;
-
-      @include breakpoint('medium') {
-        font-size: 16px;
-        line-height: 20px;
-      }
-
-      br {
-        display: none;
-
-        @include breakpoint('medium') {
-          display: none;
-        }
-
-        @include breakpoint('large') {
-          display: block;
-        }
-      }
-    }
-      
-    a {
-        font-size: 14px;
-        font-weight: 700;
-        border: 1px solid #F13120;
-        background-color: #F13120;
-        text-decoration: none;
-        color: #fff;
-        padding: 6px 20px;
-        display: inline-block;
-
-        @include breakpoint('medium') {
-          font-size: 18px;
-        }
-      }
-  }
